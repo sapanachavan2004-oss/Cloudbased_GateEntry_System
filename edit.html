@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Record</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h2>Edit Visitor</h2>
+
+    <form method="POST">
+        <input type="text" name="name" value="{{ data.name }}">
+        <input type="text" name="phone" value="{{ data.phone }}">
+
+        <input type="text" name="branch" value="{{ data.branch }}">
+        <input type="text" name="year" value="{{ data.year }}">
+
+        <input type="text" name="purpose" value="{{ data.purpose }}">
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/admin" class="link-btn">Back</a>
+</div>
+
+</body>
+</html>

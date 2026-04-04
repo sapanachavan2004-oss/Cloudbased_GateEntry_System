@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>🚪 Gate System</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/admin">Records</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</div>
+
+<h1>📊 Dashboard</h1>
+
+<div class="cards">
+    <div class="card-box">
+        <h3>Total Visitors</h3>
+        <h2>{{ total }}</h2>
+    </div>
+
+    {% for branch, count in branch_count.items() %}
+    <div class="card-box">
+        <h3>{{ branch }}</h3>
+        <h2>{{ count }}</h2>
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- ✅ Back Button BELOW cards -->
+<div class="back-container">
+    <a href="/admin" class="nav-btn">⬅ Back</a>
+</div>
+
+</body>
+</html>

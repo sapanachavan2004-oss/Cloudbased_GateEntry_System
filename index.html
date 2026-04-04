@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gate Entry System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="navbar">
+    <h2>🚪 Gate System</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/admin">Records</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h1>🚪 Gate Entry</h1>
+
+        <form action="/submit" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+
+            <select name="branch" required>
+                <option>Select Branch</option>
+                <option>Computer</option>
+                <option>AIML</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+                <option>Chemical</option>
+                <option>EXTC</option>
+                <option>Other</option>
+            </select>
+
+            <select name="year" required>
+                <option>Select Year</option>
+                <option>1st</option>
+                <option>2nd</option>
+                <option>3rd</option>
+                <option>Final</option>
+                <option>Other</option>
+            </select>
+
+            <input type="text" name="purpose" placeholder="Purpose">
+            <button type="submit">Submit</button>
+            <form method="POST" action="/submit" enctype="multipart/form-data">
+        </form>
+
+        <a href="/admin" class="nav-btn">📊 View Records</a>
+    </div>
+</div>
+
+</body>
+</html> 

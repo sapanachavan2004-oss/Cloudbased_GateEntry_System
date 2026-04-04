@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <body>
+
+        <div class="navbar">
+    <h2>🚪 Gate System</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/admin">Records</a>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</div>
+
+<div style="text-align:center;">
+    <a href="/dashboard" class="nav-btn">📊 Dashboard</a>
+</div>  
+
+<div class="container">
+    <h2 style="text-align:center; color:white; margin-bottom:20px;">
+    📊 Visitor Records
+</h2>
+
+    <input type="text" id="searchInput" placeholder="🔍 Search by name, branch..." onkeyup="searchTable()">
+
+    <table>
+        <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Branch</th>
+    <th>Year</th>
+    <th>Purpose</th>
+    <th>Time</th>
+    <th>Action</th> <!-- NEW -->
+</tr>
+
+{% for v in visitors %}
+<tr>
+    <td>{{ v.name }}</td>
+    <td>{{ v.phone }}</td>
+    <td>{{ v.branch }}</td>
+    <td>{{ v.year }}</td>
+    <td>{{ v.purpose }}</td>
+    <td>{{ v.time }}</td>
+
+    <td>
+    <a href="/edit/{{ v.id }}" class="edit-btn">Edit</a>
+    <a href="/delete/{{ v.id }}" class="delete-btn"
+       onclick="return confirm('Delete this record?')">Delete</a>
+</td>
+</tr>
+{% endfor %}
+    </table>
+
+    <a href="/" class="nav-btn">⬅ Back</a>
+</div>
+<script>
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("table tr");
+
+    rows.forEach((row, index) => {
+        if (index === 0) return; // skip header
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
